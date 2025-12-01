@@ -148,3 +148,106 @@
 .flow-line.done {
   background: var(--success);
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .architecture {
+    padding: 16px;
+  }
+
+  .architecture-header {
+    margin-bottom: 16px;
+  }
+
+  .architecture-header h2 {
+    font-size: 18px;
+  }
+
+  .architecture-header button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .flow-node {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .node-number {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .node-name {
+    font-size: 14px;
+  }
+
+  .node-desc {
+    font-size: 12px;
+  }
+
+  .done-indicator,
+  .error-indicator {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .flow-line {
+    height: 14px;
+    margin-left: 27px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .architecture {
+    padding: 12px;
+  }
+
+  .architecture-header {
+    margin-bottom: 12px;
+  }
+
+  .architecture-header h2 {
+    font-size: 16px;
+  }
+
+  .architecture-header button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .flow-node {
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .node-number {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .node-name {
+    font-size: 13px;
+  }
+
+  .node-desc {
+    font-size: 11px;
+  }
+
+  .done-indicator,
+  .error-indicator {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .flow-line {
+    height: 12px;
+    margin-left: 23px;
+  }
+}

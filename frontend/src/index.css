@@ -45,3 +45,36 @@ body {
   background: var(--border);
   border-radius: 4px;
 }
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Prevent zoom on input focus for iOS */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Smooth scrolling for mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+}

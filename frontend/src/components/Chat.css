@@ -194,3 +194,144 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .chat-header {
+    padding: 14px 16px;
+    font-size: 15px;
+    gap: 8px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .test-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .test-label {
+    font-size: 12px;
+  }
+
+  .test-buttons {
+    gap: 6px;
+    width: 100%;
+  }
+
+  .test-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+    flex: 1;
+    min-width: fit-content;
+    text-align: center;
+  }
+
+  .messages {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .message {
+    max-width: 88%;
+  }
+
+  .message-content {
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .failed-badge {
+    margin-top: 8px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .message-meta {
+    font-size: 11px;
+  }
+
+  .message-content.loading {
+    padding: 14px;
+  }
+
+  .message-content.loading span {
+    width: 6px;
+    height: 6px;
+  }
+
+  .input-area {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .input-area input {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .input-area button {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .chat-header {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .test-panel {
+    padding: 8px 10px;
+  }
+
+  .test-buttons {
+    gap: 4px;
+  }
+
+  .test-btn {
+    padding: 4px 6px;
+    font-size: 10px;
+    border-radius: 4px;
+  }
+
+  .messages {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .message {
+    max-width: 92%;
+  }
+
+  .message-content {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .input-area {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .input-area input {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .input-area button {
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+}

@@ -120,6 +120,7 @@
   min-width: 0;
 }
 
+/* Tablet */
 @media (max-width: 1000px) {
   .layout.split {
     flex-direction: column;
@@ -129,5 +130,93 @@
   .layout.split .architecture-panel {
     flex: none;
     height: 50%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 18px;
+    gap: 8px;
+  }
+
+  .logo-icon {
+    font-size: 22px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .github-link {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .github-link span {
+    display: none;
+  }
+
+  .github-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .toggle-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .layout {
+    gap: 12px;
+    height: calc(100vh - 84px);
+  }
+
+  .layout.split .chat-panel {
+    height: 55%;
+  }
+
+  .layout.split .architecture-panel {
+    height: 45%;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .header {
+    padding: 0 12px;
+    height: 56px;
+  }
+
+  .logo {
+    font-size: 16px;
+    gap: 6px;
+  }
+
+  .logo-icon {
+    font-size: 20px;
+  }
+
+  .toggle-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .main {
+    padding: 8px;
+  }
+
+  .layout {
+    gap: 8px;
+    height: calc(100vh - 72px);
   }
 }
