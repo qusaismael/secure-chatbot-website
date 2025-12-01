@@ -1,0 +1,133 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.logo-icon {
+  color: var(--accent);
+  font-size: 26px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 14px;
+  transition: all 0.15s;
+}
+
+.github-link:hover {
+  border-color: var(--border);
+  background: var(--bg-tertiary);
+  color: var(--accent);
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.toggle-btn {
+  padding: 12px 24px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.toggle-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.main {
+  flex: 1;
+  padding: 32px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.layout {
+  display: flex;
+  gap: 32px;
+  height: calc(100vh - 136px);
+}
+
+.layout:not(.split) .chat-panel {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chat-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.architecture-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 1000px) {
+  .layout.split {
+    flex-direction: column;
+  }
+  
+  .layout.split .chat-panel,
+  .layout.split .architecture-panel {
+    flex: none;
+    height: 50%;
+  }
+}
