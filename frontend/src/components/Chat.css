@@ -48,6 +48,7 @@
 }
 
 .test-btn {
+  min-height: 44px;
   padding: 6px 12px;
   background: white;
   border: 1px solid #fcd34d;
@@ -153,6 +154,10 @@
   40% { transform: translateY(-8px); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .message-content.loading span { animation: none; }
+}
+
 .input-area {
   display: flex;
   flex-wrap: wrap;
@@ -190,6 +195,7 @@
 }
 
 .input-area button {
+  min-height: 44px;
   padding: 14px 28px;
   background: var(--accent);
   border: none;

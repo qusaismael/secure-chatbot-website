@@ -44,6 +44,9 @@
 .github-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   gap: 8px;
   padding: 8px 14px;
   border-radius: var(--radius);
@@ -68,6 +71,7 @@
 }
 
 .toggle-btn {
+  min-height: 44px;
   padding: 12px 24px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
@@ -112,6 +116,9 @@
 }
 
 .simulation-note a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: #7c2d12;
   font-weight: 600;
   text-underline-offset: 3px;
@@ -200,16 +207,21 @@
   }
 
   .layout {
+    flex-direction: column;
     gap: 12px;
-    height: calc(100vh - 84px);
+    height: auto;
+    min-height: calc(100vh - 84px);
   }
 
-  .layout.split .chat-panel {
-    height: 55%;
+  .layout.split .chat-panel,
+  .layout:not(.split) .chat-panel {
+    flex: none;
+    height: max(420px, calc(100vh - 200px));
   }
 
   .layout.split .architecture-panel {
-    height: 45%;
+    flex: none;
+    height: min(420px, 70vh);
   }
 }
 
@@ -240,6 +252,5 @@
 
   .layout {
     gap: 8px;
-    height: calc(100vh - 72px);
   }
 }
