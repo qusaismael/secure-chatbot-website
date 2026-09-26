@@ -4,6 +4,8 @@ Secure AI chatbot demo for educational purposes.
 
 **[Live Demo](https://securebot.qusai.pro)**
 
+The public demo uses `frontend/src/utils/mockBackend.js` for simulated validation and canned responses; it is not a live security service.
+
 ## Architecture
 
 ```

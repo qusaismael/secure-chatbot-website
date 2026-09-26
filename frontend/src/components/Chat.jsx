@@ -117,7 +117,7 @@ function Chat({ onFlowUpdate }) {
         </div>
       </div>
 
-      <div className="messages">
+      <div className="messages" role="log" aria-label="Chat messages" aria-live="polite" aria-relevant="additions">
         {messages.map((msg) => (
           <div key={msg.id} className={`message ${msg.role}`}>
             <div className="message-content">
@@ -143,7 +143,9 @@ function Chat({ onFlowUpdate }) {
       </div>
 
       <div className="input-area">
+        <label className="message-label" htmlFor="chat-message">Message</label>
         <input
+          id="chat-message"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}

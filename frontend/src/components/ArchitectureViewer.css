@@ -20,6 +20,7 @@
 }
 
 .architecture-header button {
+  min-height: 44px;
   padding: 12px 24px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);

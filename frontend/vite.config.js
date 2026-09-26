@@ -11,6 +11,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/setupTests.js'],
+    include: ['src/**/*.test.{js,jsx}'],
+    pool: 'forks',
+    poolOptions: { forks: { singleFork: true } }
   }
 })
 
