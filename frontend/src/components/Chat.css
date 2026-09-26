@@ -155,13 +155,22 @@
 
 .input-area {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 20px 24px;
   border-top: 1px solid var(--border);
 }
 
+.message-label {
+  flex-basis: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
 .input-area input {
   flex: 1;
+  min-width: 0;
   padding: 14px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -172,6 +181,12 @@
 
 .input-area input:focus {
   border-color: var(--accent);
+}
+
+.input-area :is(input, button):focus-visible,
+.test-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .input-area button {
