@@ -99,6 +99,29 @@
   margin: 0 auto;
 }
 
+.simulation-note {
+  width: min(100% - 32px, 1536px);
+  margin: 12px auto 0;
+  padding: 12px 16px;
+  color: #78350f;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.simulation-note a {
+  color: #7c2d12;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.simulation-note a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .layout {
   display: flex;
   gap: 32px;

@@ -41,6 +41,13 @@ function App() {
         </div>
       </header>
 
+      <p className="simulation-note">
+        Simulated security flow and canned responses — no real gateway, LLM, or backend protection.{' '}
+        <a href="https://github.com/qusaismael/secure-chatbot-website/blob/main/frontend/src/utils/mockBackend.js" target="_blank" rel="noreferrer">
+          Mock response source
+        </a>
+      </p>
+
       <main className="main">
         <div className={`layout ${showArchitecture ? 'split' : ''}`}>
           <section className="chat-panel">
