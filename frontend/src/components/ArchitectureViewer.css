@@ -192,7 +192,7 @@
   height: 18px;
   background: var(--border);
   border-radius: 2px;
-  margin-left: 26px;
+  margin-left: 27px;
   transition: background 0.2s;
 }
 
@@ -248,7 +248,7 @@
 
   .flow-line {
     height: 14px;
-    margin-left: 22px;
+    margin-left: 23px;
   }
 }
 
@@ -301,6 +301,6 @@
 
   .flow-line {
     height: 12px;
-    margin-left: 19px;
+    margin-left: 20px;
   }
 }
