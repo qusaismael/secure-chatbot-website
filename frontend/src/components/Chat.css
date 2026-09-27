@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -12,32 +12,38 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-soft);
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 17px;
+  font-size: var(--text-md);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
 }
 
 .status-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   background: var(--success);
   border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--success-soft);
 }
 
+/* Attack sandbox strip — quiet cool fill, chips below */
 .test-panel {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 24px;
-  background: #fef3c7;
-  border-bottom: 1px solid #fcd34d;
+  padding: 10px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .test-label {
-  font-size: 13px;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
   font-weight: 600;
-  color: #92400e;
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
@@ -49,20 +55,22 @@
 
 .test-btn {
   min-height: 44px;
-  padding: 6px 12px;
-  background: white;
-  border: 1px solid #fcd34d;
-  border-radius: 6px;
-  font-size: 12px;
+  padding: 6px 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
   font-weight: 500;
-  color: #92400e;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.15s;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
 }
 
 .test-btn:hover:not(:disabled) {
-  background: #fef3c7;
-  border-color: #f59e0b;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .test-btn:disabled {
@@ -76,7 +84,13 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+/* anchor the thread to the bottom while it is short */
+.messages::before {
+  content: '';
+  margin-top: auto;
 }
 
 .message {
@@ -93,55 +107,69 @@
 }
 
 .message-content {
-  padding: 16px 20px;
-  border-radius: var(--radius);
-  font-size: 16px;
-  line-height: 1.6;
+  padding: 13px 18px;
+  font-size: var(--text-base);
+  line-height: 1.55;
+  overflow-wrap: break-word;
 }
 
 .message.user .message-content {
   background: var(--accent);
   color: white;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--space-1) var(--radius-lg);
 }
 
 .message.assistant .message-content {
   background: var(--bg-tertiary);
   color: var(--text-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--space-1);
 }
 
 .message.error .message-content {
-  background: #fef2f2;
-  color: var(--error);
-  border: 1px solid #fecaca;
+  background: var(--error-soft);
+  color: var(--error-ink);
+  border-left: 3px solid var(--error);
+  border-radius: var(--radius-sm) var(--radius-lg) var(--radius-lg) var(--radius-sm);
 }
 
 .failed-badge {
   display: block;
+  width: fit-content;
   margin-top: 10px;
-  padding: 6px 10px;
-  background: white;
-  border-radius: 6px;
-  font-size: 13px;
+  padding: 4px 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
   font-weight: 500;
+  color: var(--text-secondary);
   text-transform: capitalize;
 }
 
 .message-meta {
   margin-top: 6px;
-  font-size: 13px;
+  padding: 0 4px;
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
   color: var(--text-muted);
+}
+
+.message.user .message-meta {
+  text-align: right;
 }
 
 .message-content.loading {
   display: flex;
   gap: 6px;
-  padding: 20px;
+  padding: 18px 20px;
 }
 
 .message-content.loading span {
-  width: 8px;
-  height: 8px;
-  background: var(--text-muted);
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  opacity: 0.65;
   border-radius: 50%;
   animation: bounce 1.4s ease-in-out infinite;
 }
@@ -161,14 +189,16 @@
 .input-area {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 20px 24px;
-  border-top: 1px solid var(--border);
+  gap: 12px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg-primary);
 }
 
 .message-label {
   flex-basis: 100%;
-  font-size: 13px;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -176,39 +206,42 @@
 .input-area input {
   flex: 1;
   min-width: 0;
-  padding: 14px 18px;
+  padding: 13px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 16px;
+  background: var(--bg-primary);
+  font-size: var(--text-base);
+  color: var(--text-primary);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-area input::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
 }
 
 .input-area input:focus {
   border-color: var(--accent);
-}
-
-.input-area :is(input, button):focus-visible,
-.test-btn:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .input-area button {
   min-height: 44px;
-  padding: 14px 28px;
+  padding: 13px 28px;
   background: var(--accent);
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   color: white;
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .input-area button:hover:not(:disabled) {
-  background: var(--accent-light);
+  background: var(--accent-deep);
 }
 
 .input-area button:disabled {
@@ -220,13 +253,14 @@
 @media (max-width: 768px) {
   .chat-header {
     padding: 14px 16px;
-    font-size: 15px;
+    font-size: var(--text-sm);
     gap: 8px;
   }
 
   .status-dot {
     width: 8px;
     height: 8px;
+    box-shadow: 0 0 0 3px var(--success-soft);
   }
 
   .test-panel {
@@ -237,7 +271,7 @@
   }
 
   .test-label {
-    font-size: 12px;
+    font-size: var(--text-2xs);
   }
 
   .test-buttons {
@@ -246,16 +280,14 @@
   }
 
   .test-btn {
-    padding: 5px 8px;
-    font-size: 11px;
-    flex: 1;
-    min-width: fit-content;
-    text-align: center;
+    padding: 6px 12px;
+    font-size: var(--text-2xs);
+    flex: 0 0 auto;
   }
 
   .messages {
     padding: 14px;
-    gap: 14px;
+    gap: 12px;
   }
 
   .message {
@@ -263,14 +295,14 @@
   }
 
   .message-content {
-    padding: 12px 14px;
+    padding: 11px 14px;
     font-size: 14px;
     line-height: 1.5;
   }
 
   .failed-badge {
     margin-top: 8px;
-    padding: 4px 8px;
+    padding: 4px 10px;
     font-size: 11px;
   }
 
@@ -294,7 +326,6 @@
 
   .input-area input {
     padding: 12px 14px;
-    font-size: 15px;
   }
 
   .input-area button {
@@ -315,13 +346,12 @@
   }
 
   .test-buttons {
-    gap: 4px;
+    gap: 6px;
   }
 
   .test-btn {
-    padding: 4px 6px;
-    font-size: 10px;
-    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 11px;
   }
 
   .messages {
@@ -336,7 +366,7 @@
   .message-content {
     padding: 10px 12px;
     font-size: 13px;
-    border-radius: 10px;
+    border-radius: var(--radius);
   }
 
   .input-area {
@@ -346,13 +376,11 @@
 
   .input-area input {
     padding: 10px 12px;
-    font-size: 14px;
     border-radius: 10px;
   }
 
   .input-area button {
-    padding: 10px 14px;
+    padding: 10px 16px;
     font-size: 13px;
-    border-radius: 10px;
   }
 }
