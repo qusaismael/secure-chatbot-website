@@ -1,8 +1,12 @@
+/* Request flow: a signal spine on an instrument surface.
+   The traveling ping on the active marker is the page's one motion moment. */
 .architecture {
   height: 100%;
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(var(--border-soft) 1px, transparent 1px);
+  background-size: 18px 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
   padding: 24px;
   overflow-y: auto;
 }
@@ -11,29 +15,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .architecture-header h2 {
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
   font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .architecture-header button {
   min-height: 44px;
-  padding: 12px 24px;
-  background: var(--bg-tertiary);
+  padding: 10px 22px;
+  background: var(--bg-primary);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 15px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
   font-weight: 500;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
 }
 
 .architecture-header button:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-deep);
 }
 
 .flow {
@@ -46,74 +57,108 @@
   flex-direction: column;
 }
 
+/* node row: a lane on the spine, not a card */
 .flow-node {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: var(--bg-secondary);
-  border: 2px solid var(--border);
+  gap: 14px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: var(--radius);
-  transition: all 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .flow-node.active {
   border-color: var(--accent);
-  background: #eff6ff;
+  background: var(--accent-soft);
 }
 
 .flow-node.done {
-  border-color: var(--success);
-  background: #f0fdf4;
+  background: var(--success-soft);
 }
 
 .flow-node.error {
   border-color: var(--error);
-  background: #fef2f2;
+  background: var(--error-soft);
 }
 
+/* ordinal marker sitting on the spine */
 .node-number {
-  width: 32px;
-  height: 32px;
-  background: var(--bg-tertiary);
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-secondary);
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .flow-node.active .node-number {
   background: var(--accent);
+  border-color: var(--accent);
   color: white;
 }
 
 .flow-node.done .node-number {
-  background: var(--success);
-  color: white;
+  border-color: var(--success);
+  color: var(--success);
 }
 
 .flow-node.error .node-number {
   background: var(--error);
+  border-color: var(--error);
   color: white;
+}
+
+/* the traveling signal: one ping ring on the active marker */
+.flow-node.active .node-number::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  animation: signal-ping 1.2s ease-out infinite;
+}
+
+@keyframes signal-ping {
+  from { transform: scale(0.6); opacity: 0.9; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-node.active .node-number::after {
+    animation: none;
+    opacity: 0.55;
+  }
 }
 
 .node-info {
   flex: 1;
+  min-width: 0;
 }
 
 .node-name {
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
   font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .node-desc {
-  font-size: 14px;
+  font-size: var(--text-xs);
   color: var(--text-muted);
   margin-top: 2px;
+  line-height: 1.4;
 }
 
 .done-indicator,
@@ -126,23 +171,28 @@
   justify-content: center;
   font-size: 13px;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .done-indicator {
-  background: var(--success);
-  color: white;
+  background: var(--bg-primary);
+  color: var(--success);
+  border: 1px solid var(--success);
 }
 
 .error-indicator {
-  background: var(--error);
-  color: white;
+  background: var(--bg-primary);
+  color: var(--error-ink);
+  border: 1px solid var(--error);
 }
 
+/* spine segment between markers; fills once the step above is done */
 .flow-line {
-  width: 3px;
-  height: 20px;
+  width: 2px;
+  height: 18px;
   background: var(--border);
-  margin-left: 35px;
+  border-radius: 2px;
+  margin-left: 26px;
   transition: background 0.2s;
 }
 
@@ -154,14 +204,15 @@
 @media (max-width: 768px) {
   .architecture {
     padding: 16px;
+    background-size: 16px 16px;
   }
 
   .architecture-header {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .architecture-header h2 {
-    font-size: 18px;
+    font-size: var(--text-lg);
   }
 
   .architecture-header button {
@@ -171,12 +222,12 @@
 
   .flow-node {
     gap: 12px;
-    padding: 12px 14px;
+    padding: 8px 10px;
   }
 
   .node-number {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     font-size: 12px;
   }
 
@@ -185,7 +236,7 @@
   }
 
   .node-desc {
-    font-size: 12px;
+    font-size: var(--text-2xs);
   }
 
   .done-indicator,
@@ -197,7 +248,7 @@
 
   .flow-line {
     height: 14px;
-    margin-left: 27px;
+    margin-left: 22px;
   }
 }
 
@@ -205,6 +256,7 @@
 @media (max-width: 480px) {
   .architecture {
     padding: 12px;
+    background-size: 14px 14px;
   }
 
   .architecture-header {
@@ -212,17 +264,17 @@
   }
 
   .architecture-header h2 {
-    font-size: 16px;
+    font-size: var(--text-md);
   }
 
   .architecture-header button {
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-size: 12px;
   }
 
   .flow-node {
     gap: 10px;
-    padding: 10px 12px;
+    padding: 8px;
     border-radius: 10px;
   }
 
@@ -249,6 +301,6 @@
 
   .flow-line {
     height: 12px;
-    margin-left: 23px;
+    margin-left: 19px;
   }
 }
